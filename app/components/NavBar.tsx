@@ -60,7 +60,7 @@ const NavBar = () => {
           </div>
 
           {/* Icons */}
-          <div className="hidden sm:flex items-center space-x-4 text-[#030C26]">
+          <div className="hidden sm:flex items-center space-x-5 text-[#030C26]">
             <Link href="/search" className="hover:text-[#8D2741] transition-colors">
               <Search />
             </Link>
@@ -72,7 +72,7 @@ const NavBar = () => {
             </Link>
             <Link href="/cart" className="relative hover:text-[#8D2741] transition-colors">
               <ShoppingCart />
-              <span className="absolute z-10 top-0 text-[14px] left-6 font-bold px-1">
+              <span className="absolute z-10 top-0 text-[14px] left-5 font-bold px-1">
                 [0]
               </span>
             </Link>
@@ -125,7 +125,7 @@ const NavBar = () => {
             <Link href="/account" onClick={() => setIsMobileMenuOpen(false)}><CircleUser /></Link>
             <Link href="/cart" className="relative" onClick={() => setIsMobileMenuOpen(false)}>
               <ShoppingCart />
-              <span className="absolute z-10 top-1 left-6 bg-[#8D2741] text-white text-[14px] font-bold rounded-full px-1">
+              <span className="absolute z-10 top-1 left-6 text-[14px] font-bold rounded-full px-1">
                 [0]
               </span>
             </Link>

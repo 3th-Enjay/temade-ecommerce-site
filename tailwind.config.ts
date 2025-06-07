@@ -19,7 +19,12 @@ export default {
        fontFamily: {
         garamond: ['EB Garamond', 'serif'],
         WorkSans: ['Work Sans', 'sans-serif']
-      }
+      },
+       screens: {
+        smb: '932px', // custom breakpoint
+        'max-smb': { max: '500px' },
+         'max-xsmb': { max: '338px' },
+      },
     },
     plugins: [require('tailwind-scrollbar-hide')],
   },

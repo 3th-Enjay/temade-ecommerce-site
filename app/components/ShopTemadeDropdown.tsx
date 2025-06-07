@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { categories, categoryImages } from "../data/shopCategories";
+import { categories, categoryImages, CategoryImage } from "../data/shopCategories";
 
 type ShopTemadeDropdownProps = {
   onClose: () => void;
@@ -43,7 +43,22 @@ const ShopTemadeDropdown = ({ onClose, onSelect }: ShopTemadeDropdownProps) => {
     }, 300);
   };
 
-  const images = categoryImages[selectedCategory] || [];
+  // Helper: get only one color variant's images per product for the selected category
+  const getOneColorImagesForCategory = (category: string) => {
+    const items = categoryImages[category] || [];
+    // For each product, pick the first color variant and get its first image only
+    return items.map((item: CategoryImage) => {
+      const firstColorVariant = item.colorVariants[0];
+      const firstImage = firstColorVariant.images[0];
+      return {
+        src: firstImage.src,
+        alt: firstImage.alt,
+        productName: item.name,
+      };
+    });
+  };
+
+  const images = getOneColorImagesForCategory(selectedCategory);
 
   return (
     <div className="fixed inset-0 z-20 flex top-16">
@@ -88,7 +103,9 @@ const ShopTemadeDropdown = ({ onClose, onSelect }: ShopTemadeDropdownProps) => {
                 height={282}
                 className="object-cover"
               />
-              <p className="mt-2 text-[#030C26] text-sm text-left font-normal">{img.name}</p>
+              <p className="mt-2 text-[#030C26] text-sm text-left font-normal">
+                {img.productName} - {img.alt}
+              </p>
             </div>
           ))}
         </div>

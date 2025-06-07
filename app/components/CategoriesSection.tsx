@@ -6,6 +6,7 @@ import {  motion } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { EB_Garamond } from 'next/font/google';
+import Link from 'next/link';
 
 const ebGaramond = EB_Garamond({
   subsets: ['latin'],
@@ -35,17 +36,21 @@ function CategorySection() {
           <h2 className='text-responsive text-[#FFFFFF] sm:text-[#CA6F86]'>SKIRTS</h2>
         </div>
         {/* Shop Now Button */}
-        <button
-          className="border-[2px] border-white hover:border-[#701d34] text-white px-8 py-4 rounded-lg hover:bg-[#701d34] transition flex items-center m-auto"
-        >
-          SHOP NOW
-          <motion.div
-            animate={{ x: [0, 5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        <Link href="/shop" passHref>
+          <motion.button
+            className="border-[2px] border-white hover:border-[#701d34] text-white px-8 py-4 rounded-lg hover:bg-[#701d34] transition flex items-center m-auto"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <ArrowRight className="w-5 h-5" />
-          </motion.div>
-        </button>
+            SHOP NOW
+            <motion.div
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </motion.div>
+          </motion.button>
+        </Link>
       </div>
     </section>
   );
